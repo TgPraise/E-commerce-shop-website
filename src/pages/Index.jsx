@@ -4,14 +4,19 @@ import { Button } from "@/components/ui/button";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/animations";
 import SectionHeading from "@/components/SectionHeading";
 import { services } from "@/data/siteData";
-import herobackground from "@/assets/hero-img.jpg";
+import herobackground from "@/assets/hero-img.webp";
 
 const Hero = () => (
   <section className="relative min-h-[90vh] flex items-center overflow-hidden">
     {/* {herobackground} */}
-    <div
-      className="absolute inset-0 bg-cover bg-top bg-no-repeat"
-      style={{ backgroundImage: "url('/src/assets/hero-img.jpg')" }}
+    <img
+      src={herobackground}
+      alt="Safety and security consultancy"
+      width="1920"
+      height="1080"
+      className="absolute inset-0 w-full h-full object-cover -z-10"
+      loading="eager"
+      fetchPriority="high"
     />
     {/* Dark gradient overlay */}
     <div className="absolute inset-0 bg-gradient-to-br from-black/95 via-black/85 to-black/70" />
@@ -154,6 +159,7 @@ const Testimonials = () => (
         <SectionHeading
           label="Testimonials"
           title="Trusted by Industry Leaders"
+
         />
       </FadeIn>
       <StaggerContainer className="grid md:grid-cols-2 gap-6">

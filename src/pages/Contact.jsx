@@ -131,21 +131,6 @@ const ContactPage = () => {
                     ))}
                   </div>
                 </div>
-
-                {/* Map */}
-                <div className="mt-8 w-full h-64 rounded-md overflow-hidden border border-border">
-                  <iframe
-                    title="Office Location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.6!2d7.05!3d4.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwNTEnMDAuMCJOIDfCsDAzJzAwLjAiRQ!5e0!3m2!1sen!2sng!4v1700000000000!5m2!1sen!2sng"
-                    width="100%"
-                    height="250"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="w-full"
-                  />
-                </div>
               </FadeIn>
             </div>
 
@@ -188,6 +173,42 @@ const ContactPage = () => {
               </FadeIn>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-secondary/30">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Visit Us</h2>
+          
+          <div className="rounded-lg overflow-hidden border border-border shadow-lg h-96">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.8214186419236!2d7.1282859!3d4.8067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1069d5c0c0c0c0c1%3A0x1!2sPort%20Harcourt%2C%20Rivers%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1234567890"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Office Location"
+            ></iframe>
+          </div>
+
+          <div className="mt-8 bg-card border border-border rounded-lg p-8 text-center">
+            <p className="text-muted-foreground mb-4">
+              23 Smart Avenue, Eneka Road, Off Eze Wali Plaza, Rumosunwho,<br />
+              Port Harcourt, Rivers State, Nigeria
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://www.google.com/maps/search/23+Smart+Avenue,+Port+Harcourt"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+              >
+                Get Directions
+              </a>
+            </div>
           </div>
         </div>
       </section>

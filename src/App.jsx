@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import Certifications from "./pages/Certifications";
 import Team from "./pages/Team";
 import Blog from "./pages/Blog";
+import Mission from "./pages/mission.jsx";
 import ServiceDetail from "./pages/ServiceDetail";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop.jsx";
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/services/:id" element={<ServiceDetail />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/certifications" element={<Certifications />} />
+        <Route path="/mission" element={<Mission />} />
         <Route path="/team" element={<Team />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="*" element={<NotFound />} />

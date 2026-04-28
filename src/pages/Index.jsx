@@ -5,7 +5,7 @@ import { FadeIn, StaggerContainer, StaggerItem } from "@/components/animations";
 import SectionHeading from "@/components/SectionHeading";
 import { services } from "@/data/siteData";
 import herobackground from "@/assets/hero-img.webp";
-import carousel from "@/components/infiniteCarousel.jsx";
+import carousel from "@/components/InfiniteCarousel.jsx";
 import InfiniteCarousel from "../components/InfiniteCarousel";
 import { useState, useEffect } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";

@@ -2,6 +2,7 @@ import { FadeIn, StaggerContainer, StaggerItem } from "@/components/animations";
 import SectionHeading from "@/components/SectionHeading";
 import { teamMembers } from "@/data/siteData";
 import { User } from "lucide-react";
+import CEO from "../assets/galary/CEO's-photo.webp";
 
 const TeamPage = () => {
   const founder = teamMembers.find((m) => m.isFounder);
@@ -29,8 +30,8 @@ const TeamPage = () => {
           <div className="container-narrow">
             <FadeIn>
               <div className="grid md:grid-cols-3 gap-10 items-start">
-                <div className="bg-surface flex items-center justify-center aspect-[3/4]">
-                  <User className="w-20 h-20 text-muted-foreground/30" />
+                <div className="bg-surface flex items-center justify-center aspect-[3/4] rounded-lg overflow-hidden">
+                  <img src={CEO} alt={founder.name} className="w-full h-full object-cover" />
                 </div>
                 <div className="md:col-span-2">
                   <span className="font-mono-ui text-xs text-accent mb-3 block">Founder & CEO</span>
@@ -45,7 +46,7 @@ const TeamPage = () => {
       )}
 
       {/* Team */}
-      <section className="section-padding bg-surface">
+      {/* <section className="section-padding bg-surface">
         <div className="container-narrow">
           <FadeIn>
             <SectionHeading label="The Team" title="Our Experts" description="Dedicated professionals committed to your safety and security." />
@@ -65,7 +66,7 @@ const TeamPage = () => {
             ))}
           </StaggerContainer>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };

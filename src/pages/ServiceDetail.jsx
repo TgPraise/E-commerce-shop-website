@@ -11,8 +11,8 @@ const ServiceDetail = () => {
   if (!service) return <Navigate to="/services" replace />;
 
   const Icon = service.icon;
-  const whatsappUrl = `https://wa.me/2348000000000?text=${encodeURIComponent(`Hello, I'd like to inquire about your ${service.title} service.`)}`;
-  const mailtoUrl = `mailto:info@archivers.ng?subject=${encodeURIComponent(`Inquiry: ${service.title}`)}`;
+  const whatsappUrl = `https://wa.me/+2347065417864?text=${encodeURIComponent(`Hello, I'd like to inquire about your ${service.title} service.`)}`;
+  const mailtoUrl = `mailto:achieveroutsourcing@gmail.com?subject=${encodeURIComponent(`Inquiry: ${service.title}`)}`;
 
   return (
     <>
@@ -44,6 +44,21 @@ const ServiceDetail = () => {
               <FadeIn>
                 <p className="text-text-secondary text-lg leading-relaxed mb-10">{service.fullDescription}</p>
               </FadeIn>
+
+              {/* Image Gallery Section */}
+              <FadeIn delay={0.1}>
+                <div className="grid md:grid-cols-1 gap-4 mb-12">
+                  {/* Image Space 1 */}
+                  <div className="aspect-video bg-surface border border-border rounded-lg overflow-hidden hover:shadow-md transition-shadow duration-300 flex items-center justify-center">
+                    <img 
+                      src={service.image1}
+                      alt={`${service.title}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </FadeIn>
+
               <FadeIn delay={0.1}>
                 <h3 className="font-display text-xl font-semibold text-foreground mb-6">Key Features & Benefits</h3>
               </FadeIn>

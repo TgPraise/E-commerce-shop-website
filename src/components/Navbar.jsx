@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import image from "../assets/favicon.png";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -11,6 +12,7 @@ const navLinks = [
   { to: "/mission", label: "Mission" },
   { to: "/contact", label: "Contact" },
   { to: "/blog", label: "Blog" },
+  { to: "/gallery", label: "Gallery" },
 ];
 
 const Navbar = () => {
@@ -20,7 +22,9 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
       <div className="container-narrow flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="font-display text-xl font-semibold tracking-tight text-foreground">
+        
+        <Link to="/" className="font-display text-xl font-semibold tracking-tight text-foreground flex items-center gap-1">
+          <img src={image} alt="Archivers Logo" className="h-8 w-8" />
           Archivers
         </Link>
 

@@ -54,7 +54,7 @@ const Footer = () => (
         <div>
           <h4 className="font-mono-ui text-xs mb-4 opacity-50">Quick Links</h4>
           <nav className="flex flex-col gap-2">
-            {["Home", "Services", "Certifications", "Team", "Contact", "Blog"].map((link) => (
+            {["Home", "Services", "Certifications", "Team", "Contact", "Blog", "Gallery"].map((link) => (
               <Link
                 key={link}
                 to={link === "Home" ? "/" : `/${link.toLowerCase()}`}
@@ -76,7 +76,7 @@ const Footer = () => (
             </div>
             <div className="flex items-center gap-2">
               <Phone size={16} className="shrink-0" />
-              <span>+234 800 000 0000</span>
+              <span>+234 706 541 7864</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail size={16} className="shrink-0" />

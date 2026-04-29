@@ -148,7 +148,7 @@ export default function InfiniteCarousel() {
 
   return (
     <div
-      className="relative flex flex-col items-center justify-center w-full h-fit-content py-16 px-4"
+      className="relative flex flex-col items-center justify-center w-full h-fit-content overflow-x-hidden py-16 px-4"
       style={{
         background:
           "radial-gradient(ellipse 80% 60% at 50% 60%, #1a1035 0%, #09090b 70%)",

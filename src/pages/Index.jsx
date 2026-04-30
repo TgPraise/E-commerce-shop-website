@@ -7,10 +7,49 @@ import { services } from "@/data/siteData";
 import herobackground from "@/assets/hero-img.webp";
 import carousel from "@/components/InfiniteCarousel.jsx";
 import InfiniteCarousel from "../components/InfiniteCarousel";
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import SEO from "../components/SEO.jsx";
 import { seoData } from "../seo/seoConfig";
+
+const TypingAnimation = ({ words, typingSpeed = 90, deletingSpeed = 55, pauseMs = 1800 }) => {
+  const [displayed, setDisplayed] = useState("");
+  const [wordIndex, setWordIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const word = words[wordIndex];
+
+    const timer = setTimeout(() => {
+      if (!deleting) {
+        const next = charIndex + 1;
+        setDisplayed(word.slice(0, next));
+        setCharIndex(next);
+        if (next === word.length) {
+          setTimeout(() => setDeleting(true), pauseMs);
+        }
+      } else {
+        const next = charIndex - 1;
+        setDisplayed(word.slice(0, next));
+        setCharIndex(next);
+        if (next === 0) {
+          setDeleting(false);
+          setWordIndex((prev) => (prev + 1) % words.length);
+        }
+      }
+    }, deleting ? deletingSpeed : typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [charIndex, deleting, wordIndex, words, typingSpeed, deletingSpeed, pauseMs]);
+
+  return (
+    <span className="inline-flex items-baseline">
+      <span className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tight">{displayed}</span>
+      <span className="inline-block w-[3px] h-[0.85em] bg-foreground ml-[2px] translate-y-[0.05em] animate-[blink_0.75s_step-end_infinite]" />
+    </span>
+  );
+};
 
 const Hero = () => (
   <section className="relative min-h-[90vh] flex items-center overflow-hidden">
@@ -39,6 +78,8 @@ const Hero = () => (
         <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-semibold text-primary-foreground tracking-tight leading-[1.1] max-w-4xl">
           Protecting What <br className="hidden sm:block" />
           Matters Most
+          <br />
+          <TypingAnimation words={["Safety", "Sincerity", "Excellence"]} />
         </h1>
       </FadeIn>
       <FadeIn delay={0.6}>
@@ -68,6 +109,65 @@ const Hero = () => (
   </section>
 );
 
+const useCountUp = (target, duration = 1800, startOnMount = false) => {
+  const [count, setCount] = useState(0);
+  const [started, setStarted] = useState(startOnMount);
+
+  useEffect(() => {
+    if (!started) return;
+    let startTime = null;
+    const end = parseFloat(target);
+
+    const step = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      // Ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * end));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+
+    requestAnimationFrame(step);
+  }, [started, target, duration]);
+
+  return { count, trigger: () => setStarted(true) };
+};
+
+// --- Stat Card with Individual Counter ---
+const StatCard = ({ number, label, delay = 0 }) => {
+  const numericValue = parseInt(number.replace(/\D/g, ""), 10);
+  const suffix = number.replace(/[\d]/g, ""); // e.g. "+" or "%"
+  const { count, trigger } = useCountUp(numericValue, 1800);
+  const ref = useRef(null);
+  const triggered = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !triggered.current) {
+          triggered.current = true;
+          setTimeout(trigger, delay);
+        }
+      },
+      { threshold: 0.3 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [trigger, delay]);
+
+  return (
+    <div ref={ref} className="bg-surface p-6 text-center">
+      <div className="font-display text-3xl font-semibold text-foreground tabular-nums">
+        {count}{suffix}
+      </div>
+      <div className="mt-1 text-xs text-muted-foreground font-mono-ui">
+        {label}
+      </div>
+    </div>
+  );
+};
+
+// --- Overview Section ---
 const Overview = () => (
   <section className="section-padding bg-background">
     <div className="container-narrow">
@@ -79,31 +179,28 @@ const Overview = () => (
               title="Built on Expertise, Driven by Integrity"
             />
             <p className="text-text-secondary leading-relaxed">
-              Archivers Safety-Security Consultancy Limited is a premier
-              consultancy firm dedicated to delivering comprehensive safety and
-              security solutions. With deep expertise across the oil & gas,
-              construction, maritime, and corporate sectors, we help
-              organizations build resilient operations that protect their most
-              valuable assets — their people.
+              Achievers Safety-Security Consultancy Limited is a premier security
+              company in Nigeria dedicated to delivering comprehensive, data-driven
+              safety and protection solutions. With deep-rooted expertise across the
+              Nigerian oil & gas, construction, maritime, and corporate sectors, we
+              specialize in building resilient operations.
             </p>
           </div>
         </FadeIn>
         <FadeIn delay={0.2}>
           <div className="grid grid-cols-2 gap-4">
             {[
-              { number: "15+", label: "Years Experience" },
-              { number: "500+", label: "Projects Delivered" },
-              { number: "98%", label: "Client Retention" },
-              { number: "50+", label: "Certified Experts" },
+              { number: "15+", label: "Years Experience",   delay: 0   },
+              { number: "500+", label: "Projects Delivered", delay: 100 },
+              { number: "98%",  label: "Client Retention",  delay: 200 },
+              { number: "50+",  label: "Certified Experts", delay: 300 },
             ].map((stat) => (
-              <div key={stat.label} className="bg-surface p-6 text-center">
-                <div className="font-display text-3xl font-semibold text-foreground">
-                  {stat.number}
-                </div>
-                <div className="mt-1 text-xs text-muted-foreground font-mono-ui">
-                  {stat.label}
-                </div>
-              </div>
+              <StatCard
+                key={stat.label}
+                number={stat.number}
+                label={stat.label}
+                delay={stat.delay}
+              />
             ))}
           </div>
         </FadeIn>

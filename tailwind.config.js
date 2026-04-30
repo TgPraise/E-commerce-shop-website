@@ -1,6 +1,7 @@
 export default {
   darkMode: ["class"],
   content: [
+    "./index.html",
     "./pages/**/*.{js,jsx}",
     "./components/**/*.{js,jsx}",
     "./app/**/*.{js,jsx}",
@@ -87,10 +88,19 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        fadeUp: {
+          from: { opacity: "0", transform: "translateY(10px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        pulse: {
+          "0%, 100%": { background: "rgba(255,255,255,0.15)" },
+          "50%": { background: "hsl(var(--accent))" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fadeUp": "fadeUp 0.6s both",
       },
     },
   },

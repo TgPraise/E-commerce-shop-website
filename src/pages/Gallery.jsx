@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { FadeIn } from "@/components/animations";
 import SectionHeading from "@/components/SectionHeading";
 

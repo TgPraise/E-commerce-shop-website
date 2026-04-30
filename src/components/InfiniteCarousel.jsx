@@ -241,6 +241,7 @@ export default function InfiniteCarousel() {
                     backgroundImage: `url(${card.Image})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
+                    loading: "lazy",
                   }}
                 />
 

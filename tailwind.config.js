@@ -96,11 +96,17 @@ export default {
           "0%, 100%": { background: "rgba(255,255,255,0.15)" },
           "50%": { background: "hsl(var(--accent))" },
         },
+        blink: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fadeUp": "fadeUp 0.6s both",
+        "pulse": "pulse 1.4s ease-in-out infinite",
+        "blink": "blink 1.5s step-start infinite",
       },
     },
   },

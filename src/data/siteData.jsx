@@ -192,21 +192,34 @@ export const otherServices = [
 ];
 
 export const certifications = [
-  { name: "ISO 45001:2018", issuer: "International Organization for Standardization", description: "Occupational Health & Safety Management" },
-  { name: "ISO 14001:2015", issuer: "International Organization for Standardization", description: "Environmental Management Systems" },
-  { name: "ISO 9001:2015", issuer: "International Organization for Standardization", description: "Quality Management Systems" },
-  { name: "NEBOSH IGC", issuer: "National Examination Board in Occupational Safety and Health", description: "International General Certificate" },
-  { name: "OSHA Certified", issuer: "Occupational Safety and Health Administration", description: "Workplace Safety Standards" },
-  { name: "ASIS CPP", issuer: "ASIS International", description: "Certified Protection Professional" },
-  { name: "NFPA Compliance", issuer: "National Fire Protection Association", description: "Fire Safety Standards" },
-  { name: "IOSH Managing Safely", issuer: "Institution of Occupational Safety and Health", description: "Safety Management Certification" },
+  // Academic
+  { name: "B.Sc", issuer: "University", description: "Bachelor of Science", cat: "academic" },
+  { name: "PGD", issuer: "University", description: "Postgraduate Diploma", cat: "academic" },
+  { name: "M.Sc", issuer: "University", description: "First Class Masters in Criminology and Security Studies", cat: "academic" },
+
+  // Safety & Health
+  { name: "NEBOSH IGC", issuer: "National Examination Board in Occupational Safety and Health", description: "International General Certificate in Occupational Safety and Health", cat: "safety" },
+  { name: "ISO 45001", issuer: "International Organization for Standardization", description: "Occupational Health & Safety Management Systems", cat: "safety" },
+  { name: "ISO 9001", issuer: "International Organization for Standardization", description: "Quality Management Systems", cat: "safety" },
+
+  // Security & Intelligence
+  { name: "ASIS", issuer: "ASIS International", description: "American Society for Industrial Security — Professional Membership & Certification", cat: "security" },
+  { name: "SPY", issuer: "Security & Intelligence Body", description: "Security Professional Designation", cat: "security" },
+  { name: "CFIP", issuer: "Certified Forensic Investigation Professional Body", description: "Certified Forensic Investigation Professional", cat: "security" },
+  { name: "DFA", issuer: "Forensic Authority", description: "Diploma in Forensic Analysis & Investigation", cat: "security" },
+  { name: "CCTV Operator", issuer: "Security Industry Authority", description: "Closed-Circuit Television Operations & Surveillance", cat: "security" },
+  { name: "Forensic Investigation", issuer: "Forensic Authority", description: "Certified Forensic Investigator Credential", cat: "security" },
+
+  // Professional Memberships
+  { name: "ISPON", issuer: "Institute of Security Professionals of Nigeria", description: "Member — Institute of Security Professionals of Nigeria", cat: "membership" },
+  { name: "NIIS", issuer: "Nigerian Institute of Intelligence Studies", description: "Member — Nigerian Institute of Intelligence Studies", cat: "membership" },
 ];
 
 export const teamMembers = [
   {
     name: "Mr Imoh Udofa",
     role: "CEO / Founder",
-    bio: "A seasoned safety and security professional with over 15 years of experience in the oil & gas, construction, and maritime industries.",
+    bio: "A highly experienced Safety and Security Professional with over two decades of progressive expertise in law enforcement, security operations, risk management, and occupational health and safety within Nigeria government security agency (GSA) and oil and gas sector.He has served in various leadership capacity from Total energies Nigeria ltd and also as District Security Supervisor (DSS/PSS) with Shell Petroleum Development Company (SPDC), where he leads security strategy implementation, risk assessment, and operational oversight. His career spans critical roles including security coordination, intelligence operations, forensic investigation, and emergency response, with a strong track record of achieving zero-loss operations and successfully managing high-risk security incidents. Udofa holds a first class masters degree academic qualification in Criminology and Security Studies, alongside multiple local and international certifications. ",
     isFounder: true,
   },
   {

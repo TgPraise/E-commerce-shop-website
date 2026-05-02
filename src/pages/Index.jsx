@@ -45,8 +45,8 @@ const TypingAnimation = ({ words, typingSpeed = 90, deletingSpeed = 55, pauseMs 
 
   return (
     <span className="inline-flex items-baseline">
-      <span className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-sky-800 tracking-tight">{displayed}</span>
-      <span className="inline-block w-[3px] h-[0.85em] bg-sky-800 ml-[2px] translate-y-[0.05em] animate-[blink_0.75s_step-end_infinite] ml-2" />
+      <span className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-[hsl(216,69%,35%)] tracking-tight">{displayed}</span>
+      <span className="inline-block w-[3px] h-[0.85em] bg-[hsl(216,69%,35%)] ml-[2px] translate-y-[0.05em] animate-[blink_0.75s_step-end_infinite] ml-2" />
     </span>
   );
 };

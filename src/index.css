@@ -47,6 +47,8 @@
     --sidebar-accent-foreground: 210 40% 98%;
     --sidebar-border: 216 69% 16%;
     --sidebar-ring: 43 38% 56%;
+
+    --brand-blue: 216 69% 35%;
   }
 
   .dark {

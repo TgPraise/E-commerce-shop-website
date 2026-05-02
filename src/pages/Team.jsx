@@ -1,12 +1,16 @@
+import { useState } from "react";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/animations";
 import SectionHeading from "@/components/SectionHeading";
 import { teamMembers } from "@/data/siteData";
-import { User } from "lucide-react";
+import { User, ChevronDown, ChevronUp, Award } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import CEO from "../assets/galary/CEO's-photo.webp";
 
 const TeamPage = () => {
   const founder = teamMembers.find((m) => m.isFounder);
   const team = teamMembers.filter((m) => !m.isFounder);
+  const [bioExpanded, setBioExpanded] = useState(false);
 
   return (
     <>
@@ -35,38 +39,54 @@ const TeamPage = () => {
                 </div>
                 <div className="md:col-span-2">
                   <span className="font-mono-ui text-xs text-accent mb-3 block">Founder & CEO</span>
-                  <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-2">{founder.name}</h2>
+                  <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-2">
+                    {founder.name}
+                  </h2>
                   <p className="text-accent font-medium mb-6">{founder.role}</p>
-                  <p className="text-text-secondary leading-relaxed text-lg">{founder.bio}</p>
+
+                  {/* Bio with Read More */}
+                  <div className="relative">
+                    <p
+                      className={`text-text-secondary leading-relaxed text-lg transition-all duration-500 ${
+                        bioExpanded ? "" : "line-clamp-4"
+                      }`}
+                    >
+                      {founder.bio}
+                    </p>
+
+                    {/* Fade mask when collapsed */}
+                    {!bioExpanded && (
+                      <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-background to-transparent" />
+                    )}
+                  </div>
+
+                  {/* Toggle button */}
+                  <button
+                    onClick={() => setBioExpanded((prev) => !prev)}
+                    className="mt-3 flex items-center gap-1.5 text-accent text-sm font-medium hover:opacity-70 transition-opacity"
+                  >
+                    {bioExpanded ? (
+                      <>Show less <ChevronUp size={15} /></>
+                    ) : (
+                      <>Read more <ChevronDown size={15} /></>
+                    )}
+                  </button>
+
+                  {/* View Certifications */}
+                  <div className="mt-8">
+                    <Button variant="outline" asChild>
+                      <Link to="/certifications" className="flex items-center gap-2">
+                        <Award size={16} />
+                        View Certifications
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </FadeIn>
           </div>
         </section>
       )}
-
-      {/* Team */}
-      {/* <section className="section-padding bg-surface">
-        <div className="container-narrow">
-          <FadeIn>
-            <SectionHeading label="The Team" title="Our Experts" description="Dedicated professionals committed to your safety and security." />
-          </FadeIn>
-          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member) => (
-              <StaggerItem key={member.name}>
-                <div className="bg-background p-6 shadow-card h-full">
-                  <div className="w-full aspect-square bg-surface flex items-center justify-center mb-4">
-                    <User className="w-12 h-12 text-muted-foreground/30" />
-                  </div>
-                  <h3 className="font-display text-base font-semibold text-foreground">{member.name}</h3>
-                  <p className="text-xs text-accent mb-2">{member.role}</p>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{member.bio}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section> */}
     </>
   );
 };
